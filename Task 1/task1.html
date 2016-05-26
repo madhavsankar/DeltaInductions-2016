@@ -1,0 +1,109 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<style> 
+
+			div
+                { 
+				height:50px; 
+				width:1100px; 
+				border-color:blue; 
+				background-color:grey; 
+				border-radius:15px; 
+				margin:auto; 
+				text-align:center; 
+				font-size:30px; 
+				font-family:Verdana; 
+				color:white
+			     } 
+            body
+            {
+                background-size: cover;
+                background-image:url("2013-UEFA-Champions-League-Wallpaper-Stadium.jpg");
+            }
+            img
+            { 
+                height:45px; 
+                width:70px; 
+            }    
+            table 
+            { 
+                background-color:#00FFFF; 
+                border:2px solid blue; 
+                width:1100px;
+                margin: auto;
+            } 
+            td 
+            { 
+                font-size:20px; 
+                color:#0000A0; 
+                height:50px; 
+                width:275px; 
+                border:2px dashed white; 
+                text-align:center; 
+            } 
+            th 
+            { 
+                font-size:20px; 
+                color:#800080; 
+                height:50px; 
+                text-align:center; 
+            } 
+        </style> 
+        <title>
+            Champions League Final
+        </title> 
+    </head> 
+        <br> 
+    <body>  
+        <div> 
+            <img src="unnamed.png"/> 
+            Champions League Final 
+            <img src="800px-Atletico_Madrid_logo.svg.png"/> 
+        </div>
+        <br>
+        <br>
+        <table> 
+            <thead> 
+                <th colspan="4">Time Left</th> 
+            </thead> 
+            <tbody> 
+                <tr> 
+                    <td style="color:#660066"><strong>Days</strong></td> 
+                    <td style="color:#660066"><strong>Hours</strong></td> 
+                    <td style="color:#660066"><strong>Minutes</strong></td> 
+                    <td style="color:#660066"><strong>Seconds</strong></td> 
+                </tr> 
+                <tr> 
+                    <td id="day"></td> 
+                    <td id="hour"></td> 
+                    <td id="min"></td> 
+                    <td id="sec"></td> 
+                </tr> 
+            </tbody> 
+        </table> 
+        <script type="text/javascript"> 
+            setInterval(function() 
+                { 
+                var now = new Date(); 
+                nowdate=now.getTime(); 
+                var then = new Date(2016,4,29,12,15); 
+                thendate=then.getTime(); 
+                var diff=thendate-nowdate; 
+                var x=Math.floor(diff/1000); 
+                var sec=x%60; 
+                x=Math.floor(x/60); 
+                var min=x%60; 
+                x=Math.floor(x/60); 
+                var hr=x%24; 
+                x=Math.floor(x/24); 
+                var day=x; 
+                document.getElementById("day").innerHTML = day; 
+                document.getElementById("hour").innerHTML = hr; 
+                document.getElementById("min").innerHTML = min; 
+                document.getElementById("sec").innerHTML = sec; 
+                },1000); 
+        </script> 
+    </body> 
+</html>
+
