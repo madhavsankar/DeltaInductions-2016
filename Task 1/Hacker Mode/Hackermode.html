@@ -158,12 +158,21 @@ if(a==0)
     {
         var d = new Date();
         f=d.getTime();
+        g=e.getTime();
 k=setInterval(function()
 {
 
   f=f+1000;
-g=e.getTime();
-var diff=g-f;;
+
+var diff=g-f;
+    if(diff<0)
+        {
+            
+            window.alert("Match is over");
+            clearInterval(k);
+        }
+    else
+        {
                 var x=Math.floor(diff/1000); 
                 var sec=x%60; 
                 x=Math.floor(x/60); 
@@ -176,7 +185,7 @@ var diff=g-f;;
                 document.getElementById("hour").innerHTML = hr; 
                 document.getElementById("min").innerHTML = min; 
                 document.getElementById("sec").innerHTML = sec; 
-                },1000);
+                }},1000);
         }
 }
 </script>
