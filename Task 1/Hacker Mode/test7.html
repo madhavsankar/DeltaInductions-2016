@@ -119,15 +119,17 @@
             <br>
             <br>
         <button id="btn" onclick="input()">Submit</button>
-        <button class="button" onclick="fn(r=0)">Stop</button>
-        <button class="button" onclick="fn(r=1)">Start</button>
+        <button class="button" onclick="fn(0)">Stop</button>
+        <button class="button" onclick="fn(1)">Start</button>
         <button class="button" onclick="fn1()">Reset</button>
         <script>
         var k;
         var thendate;
+            var e;
         function input()
            {
             thendate = (document.getElementById("then")).value;
+               e = new Date(thendate);
         }
             
          function fn1()
@@ -138,18 +140,27 @@
            document.getElementById("sec").innerHTML = 00;
            clearInterval(k);
         }
-var e = new Date(thendate);
-var d = new Date();
+
+
+            
 var r;
-var a=1;
+var a;
 var f,g;
+
 function fn(a)
 {
-if(a!=0)
+if(a==0)
     {
+        clearInterval(k);
+    
+    }
+    else 
+    {
+        var d = new Date();
+        f=d.getTime();
 k=setInterval(function()
 {
-f=d.getTime();
+
   f=f+1000;
 g=e.getTime();
 var diff=g-f;;
