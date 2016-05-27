@@ -5,7 +5,7 @@
 
 			div
                 { 
-				height:50px; 
+				height:100px;
 				width:1100px; 
 				border-color:blue; 
 				background-color:grey; 
@@ -23,12 +23,12 @@
             }
             img
             { 
-                height:45px; 
-                width:70px; 
+                height:80px; 
+                width:80px; 
             }    
             table 
             { 
-                background-color:#00FFFF; 
+                background-color:crimson; 
                 border:2px solid blue; 
                 width:1100px;
                 margin: auto;
@@ -36,7 +36,8 @@
             td 
             { 
                 font-size:20px; 
-                color:#0000A0; 
+                color:white;
+                font-family: Arial, Helvetica, sans-serif; 
                 height:50px; 
                 width:275px; 
                 border:2px dashed white; 
@@ -45,9 +46,10 @@
             th 
             { 
                 font-size:20px; 
-                color:#800080; 
+                color:white;
                 height:50px; 
-                text-align:center; 
+                text-align:center;
+                 
             } 
         </style> 
         <title>
@@ -69,10 +71,10 @@
             </thead> 
             <tbody> 
                 <tr> 
-                    <td style="color:#660066"><strong>Days</strong></td> 
-                    <td style="color:#660066"><strong>Hours</strong></td> 
-                    <td style="color:#660066"><strong>Minutes</strong></td> 
-                    <td style="color:#660066"><strong>Seconds</strong></td> 
+                    <td><strong>Days</strong></td> 
+                    <td><strong>Hours</strong></td> 
+                    <td><strong>Minutes</strong></td> 
+                    <td><strong>Seconds</strong></td> 
                 </tr> 
                 <tr> 
                     <td id="day"></td> 
@@ -83,7 +85,7 @@
             </tbody> 
         </table> 
         <script type="text/javascript"> 
-            setInterval(function() 
+            setInterval(function fn() 
                 { 
                 var now = new Date(); 
                 nowdate=now.getTime(); 
@@ -102,7 +104,7 @@
                 document.getElementById("hour").innerHTML = hr; 
                 document.getElementById("min").innerHTML = min; 
                 document.getElementById("sec").innerHTML = sec; 
-                },1000); 
+                },1000);
         </script> 
     </body> 
 </html>
