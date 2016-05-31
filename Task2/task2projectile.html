@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<style>
+#container {
+  width: 1600px;
+  height: 800px;
+  position: relative;
+  background: grey;
+}
+#animate {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border-radius: 5px;
+  background-color: white;
+  border-color:black;
+}
+    p{
+        font-size:30px; 
+        color:red; 
+        text-align:center;
+    }
+</style>
+<body>
+<p><strong>
+    PROJECTILE MOTION
+    </strong></p>
+<p>
+<button onclick="myMove()">Click Me</button>
+</p> 
+
+<div id ="container">
+<div id ="animate"></div>
+</div>
+
+<script>
+function myMove() {
+  var elem = document.getElementById("animate");   
+var x = prompt("Enter x velocity");
+var t=0;
+var y = prompt("Enter y velocity");
+    var n=x*y/5; 
+  var pos = 1000;
+var posi = 0;
+var m=(y*y)/20;            
+            var h=Math.round(m);
+  var id = setInterval(frame, 1000);
+  function frame() {
+    if (posi >= n) {
+      clearInterval(id);
+    } else {
+       posi=x*t;
+var a=(y*t)-(5*t*t);   
+                pos=Math.round(h-a);
+      elem.style.top = pos + 'px'; 
+      elem.style.left = posi + 'px';
+t++; 
+
+    }
+  }
+}
+</script>
+
+</body>
+</html>
