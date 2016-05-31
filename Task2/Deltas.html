@@ -3,7 +3,7 @@
 <style>
 #container {
   width: 1600px;
-  height: 800px;
+  height: 600px;
   position: relative;
   background: grey;
 }
@@ -15,6 +15,11 @@
   background-color: white;
   border-color:black;
 }
+     #ground {
+        width:1600px;
+        height:200px;
+        background-color: brown;
+    }
     p{
         font-size:30px; 
         color:red; 
@@ -32,6 +37,7 @@
 <div id ="container">
 <div id ="animate"></div>
 </div>
+    <div id="ground">GROUND</div>
 
 <script>
 function myMove() {
@@ -39,19 +45,26 @@ function myMove() {
 var x = prompt("Enter x velocity");
 var t=0;
 var y = prompt("Enter y velocity");
-    var n=x*y/5; 
-  var pos = 1000;
+    var o = prompt("enter height");
+    var n = 540; 
+    var p=Math.sqrt((y*y)+(20*o));
+    var dis=Math.round((x*(p+y))/5);
+  var pos = (540-o);
 var posi = 0;
 var m=(y*y)/20;            
             var h=Math.round(m);
   var id = setInterval(frame, 1000);
   function frame() {
-    if (posi >= n) {
+    if (pos >= n) {
+        elem.style.top = 590 + 'px'; 
+      elem.style.left = dis + 'px';
       clearInterval(id);
+         
     } else {
        posi=x*t;
-var a=(y*t)-(5*t*t);   
-                pos=Math.round(h-a);
+   var a=(y*t)-(5*t*t);
+                pos=Math.round(540-o-a);
+        
       elem.style.top = pos + 'px'; 
       elem.style.left = posi + 'px';
 t++; 
