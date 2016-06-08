@@ -16,48 +16,47 @@
     </head>
     <body>
         <p><strong>GOOGLE GAME</strong></p>
-        <canvas id="game" height="100" width="1000" style="border:2px solid #000000;">
+        <canvas id="game" height="270" width="1000" style="border:2px solid #000000;">
         </canvas>
         <p id="Results"><strong>Result</strong></p>
         <p id="Result"></p>
           
         <script>
+            var image = new Image();
+            image.src = "images.jpg";
+            var image1 = new Image();
+            image1.src = "download (1).png";
             window.addEventListener("keydown", fn1, false);
-           var x=1000,y=90,z=50,w=90,u=500,v=90;
+           var x=1000,y=200,z=50,w=200,u=500,v=200;
             var i=0;
             var icon = document.getElementById("game");
             var iconx = icon.getContext("2d");
-            iconx.fillStyle = "#FF0000";  //Second Obstacle
-            iconx.fillRect(x,y,10,10);
+            iconx.drawImage(image1,x,y,50,50);
+           
             var iconz = icon.getContext("2d");
-            iconz.fillStyle = "green";  //First Obstacle
-            iconz.fillRect(u,v,10,10);
+            iconz.drawImage(image1,u,v,50,50);
              var icony = icon.getContext("2d");
-            icony.fillStyle = "blue";  //Player
-            icony.fillRect(z,w,10,10);
+            icony.drawImage(image,z,w,50,50);
             var time=10;
             var points=0;
             var k=setInterval(fn,time);
             function fn()
             { 
                
-                iconx.clearRect(x, y, 10, 10);
-                icony.clearRect(z, w, 10, 10);
-                iconz.clearRect(u, v, 10, 10);
+                iconx.clearRect(x, y, 50, 50);
+                icony.clearRect(z, w, 50, 50);
+                iconz.clearRect(u, v, 50, 50);
             
                 x--;
                 u--;
             
-                iconx.fillStyle = "#FF0000";
-            iconx.fillRect(x,y,10,10);
-               icony.fillStyle = "blue";
-            icony.fillRect(z,w,10,10);
-                 iconz.fillStyle = "green";
-            iconz.fillRect(u,v,10,10);
+                iconx.drawImage(image1,x,y,50,50);
+               icony.drawImage(image,z,w,50,50);
+                 iconz.drawImage(image1,u,v,50,50);
                 
                     
                 
-                if(x==-10)
+                if(x==-50)
                     {
                         x=1000;
                         points++;
@@ -74,7 +73,7 @@
                         k=setInterval(fn,1);
                             }
                     }
-                if(u==-10)
+                if(u==-50)
                     {
                         u=1000;
                         points++;
@@ -91,18 +90,18 @@
                         k=setInterval(fn,1);
                             }
                     }
-              if(x-z<10 && z-x<10)
+              if(x-z<50 && z-x<50)
                   {
-                      if(y-w<10 && w-y<10)
+                      if(y-w<50 && w-y<50)
                           {
                               window.alert("Game over");
                               clearInterval(k);
                               document.getElementById("Result").innerHTML=points;
                           }
                   }
-                 if(u-z<10 && z-u<10)
+                 if(u-z<50 && z-u<50)
                   {
-                      if(v-w<10 && w-v<10)
+                      if(v-w<50 && w-v<50)
                           {
                               window.alert("Game over");
                               clearInterval(k);
@@ -120,14 +119,14 @@
                    
                    function fn2()
                     {
-                        icony.clearRect(z, w, 10, 10);
+                        icony.clearRect(z, w, 50, 50);
                         
                     if(i==0)
                     {
-                        if(w>=20)
+                        if(w>=70)
                     {
                         w--;
-                        if (w==20)
+                        if (w==70)
                            {
                             i=1;
                             }
@@ -135,10 +134,10 @@
                     }
                         if(i==1)
                             {
-                        if(w<=90)
+                        if(w<=200)
                             {
                                 w++;
-                                if(w==90)
+                                if(w==200)
                                     {
                                         clearInterval(l);
                                     }
@@ -146,8 +145,7 @@
                             }
                        
                        
-                    icony.fillStyle = "blue";
-            icony.fillRect(z,w,10,10);
+                   icony.drawImage(image,z,w,50,50);
                          
                      }
                          }
