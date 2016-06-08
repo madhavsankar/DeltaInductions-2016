@@ -16,7 +16,7 @@
     </head>
     <body>
         <p><strong>GOOGLE GAME</strong></p>
-        <canvas id="game" height="270" width="1000" style="border:2px solid #000000;">
+        <canvas id="game" height="270" width="1300" style="border:2px solid #000000;">
         </canvas>
         <p id="Results"><strong>Result</strong></p>
         <p id="Result"></p>
@@ -27,7 +27,7 @@
             var image1 = new Image();
             image1.src = "download (1).png";
             window.addEventListener("keydown", fn1, false);
-           var x=1000,y=200,z=50,w=200,u=500,v=200;
+           var x=1300,y=200,z=50,w=200,u=650,v=200;
             var i=0;
             var icon = document.getElementById("game");
             var iconx = icon.getContext("2d");
@@ -58,7 +58,7 @@
                 
                 if(x==-50)
                     {
-                        x=1000;
+                        x=1300;
                         points++;
                         if(time>2)
                         {
@@ -75,7 +75,7 @@
                     }
                 if(u==-50)
                     {
-                        u=1000;
+                        u=1300;
                         points++;
                         if(time>2)
                         {
