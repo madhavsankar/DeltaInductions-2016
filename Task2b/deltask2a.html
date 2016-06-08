@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <style>
+            p{
+                font-size:30px; 
+                color:red; 
+                text-align:center;
+            }
+        </style>
+    <title>
+        Google Game
+        </title>
+        <style>
+           
+        </style>
+    </head>
+    <body>
+        <p><strong>GOOGLE GAME</strong></p>
+        <canvas id="game" height="100" width="1000" style="border:2px solid #000000;">
+        </canvas>
+        <p id="Results"><strong>Result</strong></p>
+        <p id="Result"></p>
+          
+        <script>
+            window.addEventListener("keydown", fn1, false);
+           var x=1000,y=90,z=50,w=90,u=500,v=90;
+            var i=0;
+            var icon = document.getElementById("game");
+            var iconx = icon.getContext("2d");
+            iconx.fillStyle = "#FF0000";  //Player
+            iconx.fillRect(x,y,10,10);
+            var iconz = icon.getContext("2d");
+            iconz.fillStyle = "green";  //First Obstacle
+            iconz.fillRect(u,v,10,10);
+             var icony = icon.getContext("2d");
+            icony.fillStyle = "blue";  //Second Obstacle
+            icony.fillRect(z,w,10,10);
+            var time=10;
+            var points=0;
+            var k=setInterval(fn,time);
+            function fn()
+            { 
+               
+                iconx.clearRect(x, y, 10, 10);
+                icony.clearRect(z, w, 10, 10);
+                iconz.clearRect(u, v, 10, 10);
+            
+                x--;
+                u--;
+            
+                iconx.fillStyle = "#FF0000";
+            iconx.fillRect(x,y,10,10);
+               icony.fillStyle = "blue";
+            icony.fillRect(z,w,10,10);
+                 iconz.fillStyle = "green";
+            iconz.fillRect(u,v,10,10);
+                
+                    
+                
+                if(x==-10)
+                    {
+                        x=1000;
+                        points++;
+                        if(time>2)
+                        {
+                            clearInterval(k);
+                        time=time-1;
+                        k=setInterval(fn,time);   //To make the game move faster as time proceeds
+                        }
+                        else
+                            {
+                                clearInterval(k);
+                       
+                        k=setInterval(fn,1);
+                            }
+                    }
+                if(u==-10)
+                    {
+                        u=1000;
+                        points++;
+                        if(time>2)
+                        {
+                            clearInterval(k);
+                        time=time-1;
+                        k=setInterval(fn,time);
+                        }
+                        else
+                            {
+                                clearInterval(k);
+                       
+                        k=setInterval(fn,1);
+                            }
+                    }
+              if(x-z<10 && z-x<10)
+                  {
+                      if(y-w<10 && w-y<10)
+                          {
+                              window.alert("Game over");
+                              clearInterval(k);
+                              document.getElementById("Result").innerHTML=points;
+                          }
+                  }
+                 if(u-z<10 && z-u<10)
+                  {
+                      if(v-w<10 && w-v<10)
+                          {
+                              window.alert("Game over");
+                              clearInterval(k);
+                              document.getElementById("Result").innerHTML=points;
+                          }
+                  }
+                  
+            }
+            function fn1(e)
+                {
+                     if (e.keyCode == "38" || e.keyCode == "32") 
+                         {
+                    i=0;
+                   var l=setInterval(fn2,10);
+                   
+                   function fn2()
+                    {
+                        icony.clearRect(z, w, 10, 10);
+                        
+                    if(i==0)
+                    {
+                        if(w>=20)
+                    {
+                        w--;
+                        if (w==20)
+                           {
+                            i=1;
+                            }
+                    }
+                    }
+                        if(i==1)
+                            {
+                        if(w<=90)
+                            {
+                                w++;
+                                if(w==90)
+                                    {
+                                        clearInterval(l);
+                                    }
+                            }
+                            }
+                       
+                       
+                    icony.fillStyle = "blue";
+            icony.fillRect(z,w,10,10);
+                         
+                     }
+                         }
+                }
+                      
+        </script>
+    </body>
+</html>
