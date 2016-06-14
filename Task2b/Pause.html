@@ -1,0 +1,282 @@
+<html>
+    <head>
+        <style>
+            h1{
+                font-size:300%; 
+                color:crimson; 
+                text-align:center;
+            }
+            p{
+                color:greenyellow;
+                font-size:210%;
+                text-align:center;
+            }
+             .button {
+               padding: 1.5% 3%;
+              text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 1% 7%;
+                cursor: pointer;
+            }
+
+            .button1 {
+                background-color: white; 
+                color: black; 
+                border: 2% solid #4CAF50;
+            }
+            .button2 {
+                background-color: white; 
+                color: black; 
+                border: 2% solid #4CAF50;
+            }
+            .button3 {
+                background-colyor: white; 
+                color: black; 
+                border: 2% solid #4CAF50;
+            }
+            .button4 {
+                background-color: white; 
+                color: black; 
+                border: 2% solid #4CAF50;
+            }
+            body
+            {
+                background-size: cover;
+                background-image:url("BackgroundSkyFinalLook.jpg");
+            }
+        </style>
+    <title>
+        Google Game
+        </title>
+       
+    </head>
+    <body>
+        <h1><strong>JUMP AHEAD</strong></h1>
+        <p id="end"></p>
+        <p id="Results" style="font-size:210%"><strong>Result</strong></p>
+        <p id="Result" style="font-size:1000%"></p>
+        <canvas id="game" height="270" width="1300" style="border:2px solid #000000;">
+        </canvas>
+        <button class="button" onclick="init()">Music on</button>
+        <button class="button" onclick="onit()">Music off</button>
+        <button class="button" onclick="pauseit()">Pause</button>
+        <button class="button" onclick="fn(1)">Start</button>
+        
+        <script>
+            var time=10;
+            var count=0;
+            var song;
+            var k;
+                song=new sound("bg.mp3");
+                
+            function init()
+            {
+            song.play();
+            }
+            function onit()
+            {
+            song.stop();
+            }
+            function sound(src) {
+            this.sound = document.createElement("audio");
+            this.sound.src = src;
+            this.sound.setAttribute("preload", "auto");
+            this.sound.setAttribute("controls", "none");
+            this.sound.style.display = "none";
+            document.body.appendChild(this.sound);
+            this.play = function(){
+            this.sound.play();
+            }
+            this.stop = function(){
+            this.sound.pause();
+            }    
+            }
+            var q;
+            function pauseit()
+            {  clearInterval(k);
+                
+            }
+            var once=0;
+            var num=0;
+            var backgroundImage = new Image(); 
+            backgroundImage.src = "6.png"; 
+            var image = new Image();
+            image.src = "images.jpg";
+            var image1 = new Image();
+            image1.src = "download (1).png";
+         
+            
+            window.addEventListener("keydown", fn1, false);
+           var x=1300,y=200,z=50,w=200,u=650,v=200;
+            var i=0;
+            var icon = document.getElementById("game");
+            var iconb = icon.getContext("2d");
+            iconb.drawImage(backgroundImage,0,0,270,1300);
+            
+            var iconx = icon.getContext("2d");
+            iconx.drawImage(image1,x,y,50,50);
+           
+            var iconz = icon.getContext("2d");
+            iconz.drawImage(image1,u,v,50,50);
+             var icony = icon.getContext("2d");
+            icony.drawImage(image,z,w,50,50);
+            var count=0;
+            var points=0;
+            k=setInterval(fn,10);
+            function fn(num)
+            { //clearInterval(q);
+               if(num==1)
+                   {
+                       num=0;
+                       clearInterval(k);
+                       var k=setInterval(fn,10);
+                   }
+               
+                iconx.clearRect(x, y, 50, 50);
+                icony.clearRect(z, w, 50, 50);
+                iconz.clearRect(u, v, 50, 50);
+            
+                x--;
+                u--;
+            
+                iconx.drawImage(image1,x,y,50,50);
+               icony.drawImage(image,z,w,50,50);
+                 iconz.drawImage(image1,u,v,50,50);
+                
+                  if(points==3)
+                    {if(once==0)
+                        {
+                            iconx.clearRect(x, y, 50, 50);
+                            iconz.clearRect(u, v, 50, 50);
+                      image1.src = "index.png"; 
+                        y=y-10;
+                        v=v-10;
+                            once=1;
+                            iconx.drawImage(image1,x,y,50,50);
+                            iconz.drawImage(image1,u,v,50,50);
+                        }
+                    }  
+                if(points==7)
+                    {if(once==1)
+                        {
+                            iconx.clearRect(x, y, 50, 50);
+                            iconz.clearRect(u, v, 50, 50);
+                      image1.src = "Taladro_bird_artwork_by_olocoonstito-d5bynm3.png"; 
+                        y=y-10;
+                        v=v-10;
+                            once=2;
+                            iconx.drawImage(image1,x,y,50,50);
+                            iconz.drawImage(image1,u,v,50,50);
+                        }
+                    }  
+                
+                if(x==-50)
+                    {
+                        x=1300;
+                        points++;
+                        
+                        
+                    }
+                if(u==-50)
+                    {
+                        u=1300;
+                        points++;
+                        
+                    }
+                 
+              if(x-z<50 && z-x<50)
+                  {
+                      if(y-w<50 && w-y<50)
+                          {
+                              //window.alert("Game over");
+                              clearInterval(k);
+                              
+        
+                              document.getElementById("end").innerHTML="GAME OVER";
+                              
+                              if(count==0)
+                                  {
+                                    count=1;
+                                      document.getElementById("Result").innerHTML=points;
+                                  }
+                                      
+                              song.stop();
+                              setTimeout(function()
+                                        {
+                              window.location="result1.html";
+                              },3000);
+                          }
+                  }
+                 if(u-z<50 && z-u<50)
+                  {
+                      if(v-w<50 && w-v<50)
+                          {
+                             // window.alert("Game over");
+                              
+                              clearInterval(k);
+                              document.getElementById("end").innerHTML="GAME OVER";
+                              
+                             // window.pauseit();
+                              if(count==0)
+                                  {
+                                    count=1;
+                                      document.getElementById("Result").innerHTML=points;
+                                  }
+                              song.stop();
+                              setTimeout(function()
+                                        {
+                              window.location="result1.html";
+                              },3000);
+                          }
+                  }
+                  
+            }
+            function fn1(e)
+                {
+                     if (e.keyCode == "38" || e.keyCode == "32") 
+                         {
+                             if(w==200)
+                                 {
+                    i=0;
+                   var l=setInterval(fn2,10);
+                   
+                   function fn2()
+                    {
+                        icony.clearRect(z, w, 50, 50);
+                        
+                    if(i==0)
+                    {
+                        if(w>=70)
+                    {
+                        w--;
+                        if (w==70)
+                           {
+                            i=1;
+                            }
+                    }
+                    }
+                        if(i==1)
+                            {
+                        if(w<=200)
+                            {
+                                w++;
+                                if(w==200)
+                                    {
+                                        clearInterval(l);
+                                    }
+                            }
+                            }
+                       
+                       
+                   icony.drawImage(image,z,w,50,50);
+                         
+                     }
+                         }
+                         }
+                }
+                      
+        </script>
+    </body>
+</html>
