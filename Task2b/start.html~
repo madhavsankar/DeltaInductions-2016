@@ -22,10 +22,18 @@
         <p id="Result"></p>
         
         <script type="text/javascript">
+            /*var scene;
+            function init()
+            {
+                scene= new Scene();
+                song=new Sound("02 Prem Ratan Dhan Payo (SongsMp3.Com).mp3");
+                scene.start();
+            }
+            song.play();*/
             var image = new Image();
-            image.src = "images/images.jpg";
+            image.src = "images.jpg";
             var image1 = new Image();
-            image1.src = "images/download (1).png";
+            image1.src = "download (1).png";
             window.addEventListener("keydown", fn1, false);
            var x=1300,y=200,z=50,w=200,u=650,v=200;
             var i=0;

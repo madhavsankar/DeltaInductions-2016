@@ -35,7 +35,7 @@
              body
             {
                 background-size: cover;
-                background-image:url("all-together-wallpapers_8010_1280x800.jpg");
+                background-image:url("images/all-together-wallpapers_8010_1280x800.jpg");
             }
         </style>
     <title>

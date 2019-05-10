@@ -14,12 +14,12 @@
 				text-align:center; 
 				font-size:30px; 
 				font-family:Verdana; 
-				color:white
+				color:white;
 			     } 
             body
             {
                 background-size: cover;
-                background-image:url("2013-UEFA-Champions-League-Wallpaper-Stadium.jpg");
+                background-image:url("images/2013-UEFA-Champions-League-Wallpaper-Stadium.jpg");
             }
             img
             { 
@@ -51,17 +51,43 @@
                 text-align:center;
                  
             } 
+            .button {
+               padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+.button3 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f44336;
+}
         </style> 
         <title>
             Champions League Final
         </title> 
     </head> 
-        <br> 
     <body>  
         <div> 
-            <img src="unnamed.png"/> 
+            <img src="images/unnamed.png"/> 
             Champions League Final 
-            <img src="800px-Atletico_Madrid_logo.svg.png"/> 
+            <img src="images/800px-Atletico_Madrid_logo.svg.png"/> 
         </div>
         <br>
         <br>
@@ -84,14 +110,69 @@
                 </tr> 
             </tbody> 
         </table> 
-        <script type="text/javascript"> 
-            setInterval(function fn() 
-                { 
-                var now = new Date(); 
-                nowdate=now.getTime(); 
-                var then = new Date(2016,4,29,12,15); 
-                thendate=then.getTime(); 
-                var diff=thendate-nowdate; 
+        <p style="color:white">
+            Enter a date after 26 May 2016:<br>
+        </p>
+        <form>
+            <input type="datetime-local" id="then" value="2016-11-26T15:30:00">
+        </form>
+            <br>
+            <br>
+        <button id="btn" onclick="input()">Submit</button>
+        <button class="button" onclick="fn(0)">Stop</button>
+        <button class="button" onclick="fn(1)">Start</button>
+        <button class="button" onclick="fn1()">Reset</button>
+        <script>
+        var k;
+        var thendate;
+            var e;
+        function input()
+           {
+            thendate = (document.getElementById("then")).value;
+               e = new Date(thendate);
+        }
+            
+         function fn1()
+          {
+           document.getElementById("day").innerHTML = 00;
+           document.getElementById("hour").innerHTML = 00;
+           document.getElementById("min").innerHTML = 00;
+           document.getElementById("sec").innerHTML = 00;
+           clearInterval(k);
+        }
+
+
+            
+var r;
+var a;
+var f,g;
+
+function fn(a)
+{
+if(a==0)
+    {
+        clearInterval(k);
+    
+    }
+    else 
+    {
+        var d = new Date();
+        f=d.getTime();
+        g=e.getTime();
+k=setInterval(function()
+{
+
+  f=f+1000;
+
+var diff=g-f;
+    if(diff<0)
+        {
+            
+            window.alert("Match is over");
+            clearInterval(k);
+        }
+    else
+        {
                 var x=Math.floor(diff/1000); 
                 var sec=x%60; 
                 x=Math.floor(x/60); 
@@ -104,8 +185,12 @@
                 document.getElementById("hour").innerHTML = hr; 
                 document.getElementById("min").innerHTML = min; 
                 document.getElementById("sec").innerHTML = sec; 
-                },1000);
-        </script> 
-    </body> 
-</html>
+                }},1000);
+        }
+}
+</script>
 
+ </body>
+ </html>
+               
+      

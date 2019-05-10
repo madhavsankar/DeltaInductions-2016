@@ -17,7 +17,7 @@
                 text-decoration: none;
                 display: inline-block;
                 font-size: 16px;
-                margin: 1% 17%;
+                margin: 1% 7%;
                 cursor: pointer;
             }
 
@@ -31,11 +31,20 @@
                 color: black; 
                 border: 2% solid #4CAF50;
             }
-            
+            .button3 {
+                background-colyor: white; 
+                color: black; 
+                border: 2% solid #4CAF50;
+            }
+            .button4 {
+                background-color: white; 
+                color: black; 
+                border: 2% solid #4CAF50;
+            }
             body
             {
                 background-size: cover;
-                background-image:url("images/BackgroundSkyFinalLook.jpg");
+                background-image:url("BackgroundSkyFinalLook.jpg");
             }
         </style>
     <title>
@@ -52,14 +61,15 @@
         </canvas>
         <button class="button" onclick="init()">Music on</button>
         <button class="button" onclick="onit()">Music off</button>
-        
+        <button class="button" onclick="pauseit()">Pause</button>
+        <button class="button" onclick="fn(1)">Start</button>
         
         <script>
             var time=10;
             var count=0;
             var song;
             var k;
-                song=new sound("sounds/bg.mp3");
+                song=new sound("bg.mp3");
                 
             function init()
             {
@@ -84,19 +94,27 @@
             }    
             }
             var q;
-            
+            function pauseit()
+            {  clearInterval(k);
+                
+            }
             var once=0;
             var num=0;
+            var backgroundImage = new Image(); 
+            backgroundImage.src = "6.png"; 
             var image = new Image();
-            image.src = "images/images.jpg";
+            image.src = "images.jpg";
             var image1 = new Image();
-            image1.src = "images/download (1).png";
+            image1.src = "download (1).png";
          
             
             window.addEventListener("keydown", fn1, false);
            var x=1300,y=200,z=50,w=200,u=650,v=200;
             var i=0;
             var icon = document.getElementById("game");
+            var iconb = icon.getContext("2d");
+            iconb.drawImage(backgroundImage,0,0,270,1300);
+            
             var iconx = icon.getContext("2d");
             iconx.drawImage(image1,x,y,50,50);
            
@@ -106,14 +124,14 @@
             icony.drawImage(image,z,w,50,50);
             var count=0;
             var points=0;
-            k=setInterval(fn,time);
+            k=setInterval(fn,10);
             function fn(num)
             { //clearInterval(q);
                if(num==1)
                    {
                        num=0;
                        clearInterval(k);
-                       var k=setInterval(fn,time);
+                       var k=setInterval(fn,10);
                    }
                
                 iconx.clearRect(x, y, 50, 50);
@@ -132,7 +150,7 @@
                         {
                             iconx.clearRect(x, y, 50, 50);
                             iconz.clearRect(u, v, 50, 50);
-                      image1.src = "images/index.png"; 
+                      image1.src = "index.png"; 
                         y=y-10;
                         v=v-10;
                             once=1;
@@ -145,7 +163,7 @@
                         {
                             iconx.clearRect(x, y, 50, 50);
                             iconz.clearRect(u, v, 50, 50);
-                      image1.src = "images/Taladro_bird_artwork_by_olocoonstito-d5bynm3.png"; 
+                      image1.src = "Taladro_bird_artwork_by_olocoonstito-d5bynm3.png"; 
                         y=y-10;
                         v=v-10;
                             once=2;
@@ -159,35 +177,13 @@
                         x=1300;
                         points++;
                         
-                        if(time>2)
-                        {
-                            clearInterval(k);
-                        time=time-1;
-                        k=setInterval(fn,time);   //To make the game move faster as time proceeds
-                        }
-                        else
-                            {
-                                clearInterval(k);
-                       
-                        k=setInterval(fn,1);
-                            }
+                        
                     }
                 if(u==-50)
                     {
                         u=1300;
                         points++;
-                        if(time>2)
-                        {
-                            clearInterval(k);
-                        time=time-1;
-                        k=setInterval(fn,time);
-                        }
-                        else
-                            {
-                                clearInterval(k);
-                       
-                        k=setInterval(fn,1);
-                            }
+                        
                     }
                  
               if(x-z<50 && z-x<50)
@@ -209,7 +205,7 @@
                               song.stop();
                               setTimeout(function()
                                         {
-                              window.location="result.html";
+                              window.location="result1.html";
                               },3000);
                           }
                   }

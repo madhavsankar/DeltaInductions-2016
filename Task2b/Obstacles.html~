@@ -59,7 +59,7 @@
             var count=0;
             var song;
             var k;
-                song=new sound("sounds/bg.mp3");
+                song=new sound("bg.mp3");
                 
             function init()
             {
